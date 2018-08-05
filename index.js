@@ -1,12 +1,12 @@
 const { Client, Util } = require('discord.js');
 const { PREFIX } = require('./config');
 const YouTube = require('simple-youtube-api');
-const TOKEN = "NDY3Njg5OTQxNjY5OTA0Mzk0.DkNc3Q.tfWP7Xj6PsOL_T3oQ8ZuQy-LYi8";
+const TOKEN = process.env.TOKEN;
 const ytdl = require('ytdl-core');
 
 const client = new Client({ disableEveryone: true });
 
-const youtube = new YouTube("AIzaSyAeIyG8gYJsBOwmjwbBmCBaN54saMUEPXM");
+const youtube = new YouTube(process.env.YT);
 
 const queue = new Map();
 

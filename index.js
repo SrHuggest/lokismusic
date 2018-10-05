@@ -97,31 +97,31 @@ console.log(videos)
   
 } else if (command === 'skip') {
 		if (!msg.member.voiceChannel) return msg.channel.send('<:err:449743511391305748> **|** Ocorreu um erro inesperado ao conectar-se em um canal de voz.');
-		if (!serverQueue) return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando k!play');
+		if (!serverQueue) return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando >!play');
 		serverQueue.connection.dispatcher.end('Skip command has been used!');
 		return undefined;
 	} else if (command === 'stop') {
 		if (!msg.member.voiceChannel) return msg.channel.send('<:err:449743511391305748> **|** Ocorreu um erro inesperado ao conectar-se em um canal de voz.');
-		if (!serverQueue) return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando k!play');
+		if (!serverQueue) return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando >!play');
 		serverQueue.songs = [];
 		serverQueue.connection.dispatcher.end('Stop command has been used!');
 		return undefined;
 	} else if (command === 'volume') {
 		if(args[1] < 1) return msg.reply('🔇 **|** O volume não pode ser menor que o número 1(um) para o conforto de todos.')
-		if(args[1] > 8) return msg.reply('🔈 **|** O volume não pode ser maior que o número 8(oito) para o conforto de todos.')
+		if(args[1] > 10) return msg.reply('🔈 **|** O volume não pode ser maior que o número 10(dez) para o conforto de todos.')
 		if (!msg.member.voiceChannel) return msg.channel.send('<:err:449743511391305748> **|** Ocorreu um erro inesperado ao conectar-se em um canal de voz.');
-		if (!serverQueue) return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando k!play');
+		if (!serverQueue) return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando >!play');
 		if (!args[1]) return msg.channel.send('🔈 **|** O volume atual é: '+serverQueue.volume);
 		serverQueue.volume = args[1];
 		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 5);
 		return msg.channel.send('✅ **|** Alterei o volume para: '+args[1]);
 	} else if (command === 'np') {
  
-		if (!serverQueue) return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando k!play');
+		if (!serverQueue) return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando >!play');
     
         return msg.channel.send(`💿 **|** Tocando agora: **${serverQueue.songs[0].title}** `);
     } else if (command === 'queue') {
-		if (!serverQueue) return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando k!play');
+		if (!serverQueue) return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando >!play');
 		let index2 = 0;
 	const hastebin = require('hastebin-gen');
 hastebin(serverQueue.songs.map(song => ` - ${song.title}`).join('\n'), "js").then(r => {
@@ -133,14 +133,14 @@ hastebin(serverQueue.songs.map(song => ` - ${song.title}`).join('\n'), "js").the
 		if (serverQueue && serverQueue.playing) {
 			serverQueue.playing = false;
 			serverQueue.connection.dispatcher.pause();
-			return msg.channel.send('⏸ **|** Agora a música tocando está pausada, use k!resume para resumir e continuar.');
+			return msg.channel.send('⏸ **|** Agora a música tocando está pausada, use >!resume para resumir e continuar.');
 		}
-		return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando k!play');
+		return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando >!play');
  } else if (command === 'repetir') {
 		if (serverQueue && serverQueue.playing) {
 			console.log(serverQueue)
 			serverQueue.connection.dispatcher_repeat = serverQueue
-			return msg.channel.send('⏸ **|** Agora a música tocando está pausada, use k!resume para resumir e continuar.');
+			return msg.channel.send('⏸ **|** Agora a música tocando está pausada, use >!resume para resumir e continuar.');
 		}
 return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando k!play');
 	} else if (command === 'resume') {
@@ -195,7 +195,7 @@ async function handleVideo(video,  msg, voiceChannel, playlist = false) {
 
 const embedbla = new Discord2.RichEmbed()
 .setTitle(`__${msg.author.tag} adicionou músicas à lista de reprodução__`)
-.setDescription(`<💿> **|** __${song.title}__`)
+.setDescription(`💿 **|** __${song.title}__`)
 .setTimestamp()
 .setFooter(`Música`, msg.author.displayAvatarURL)
 		 return msg.channel.send(embedbla)

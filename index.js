@@ -108,7 +108,7 @@ console.log(videos)
 		return undefined;
 	} else if (command === 'volume') {
 		if(args[1] < 1) return msg.reply('🔇 **|** O volume não pode ser menor que o número 1(um) para o conforto de todos.')
-		if(args[1] > 10) return msg.reply('🔈 **|** O volume não pode ser maior que o número 10(dez) para o conforto de todos.')
+		if(args[1] > 100) return msg.reply('🔈 **|** O volume não pode ser maior que o número 100(cem) para o conforto de todos.')
 		if (!msg.member.voiceChannel) return msg.channel.send('<:err:449743511391305748> **|** Ocorreu um erro inesperado ao conectar-se em um canal de voz.');
 		if (!serverQueue) return msg.channel.send('🎧 **|** Nada tocando. Que tal usar o meu comando >!play');
 		if (!args[1]) return msg.channel.send('🔈 **|** O volume atual é: '+serverQueue.volume);
